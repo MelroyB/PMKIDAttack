@@ -101,7 +101,7 @@ class PMKIDAttack extends Module
     private function toggleettercap()
     {
         if (!$this->checkRunning("hcxdumptool")) {
-            $full_cmd = $this->request->command . " --enable_status 31 -o /pineapple/modules/PMKIDAttack/log/log_".time().".pcap > /pineapple/modules/PMKIDAttack/log/log_".time().".log";
+            $full_cmd = $this->request->command . " --enable_status 1 -o /pineapple/modules/PMKIDAttack/log/log_".time().".pcap > /pineapple/modules/PMKIDAttack/log/log_".time().".log";
             shell_exec("echo -e \"{$full_cmd}\" > /tmp/PMKIDAttack.run");
 			
 			
