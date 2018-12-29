@@ -172,12 +172,14 @@
 					</div>
 		  
 					<div class="checkbox">
-						<img src="/modules/PMKIDAttack/resources/help.png" height=16 width=16 title="disable transmitting deauthentications &#xA; affected: connections between client an access point"></img>                 
+						<img src="/modules/PMKIDAttack/resources/help.png" height=16 width=16 title="disable transmitting deauthentications &#xA; affected: connections between client an access point"></img> 
+						<img src="/modules/PMKIDAttack/resources/caution.png" height=16 width=16 title="Enable this if you are connected trough WiFi with the Pineapple"></img>
 						<label><input type="checkbox" ng-change="update()" ng-model="protoOptions.option2" ng-true-value="'--disable_deauthentications'"> Disable Deauthentication</label>
 					</div>
 		                            
 					<div class="checkbox">
 						<img src="/modules/PMKIDAttack/resources/help.png" height=16 width=16 title="disable transmitting disassociations &#xA; affected: retry (EAPOL 4/4 - M4) attack"></img>
+						<img src="/modules/PMKIDAttack/resources/caution.png" height=16 width=16 title="Enable this if you are connected trough WiFi with the Pineapple"></img>
 						<label><input type="checkbox" ng-change="update()" ng-model="protoOptions.option3" ng-true-value="'--disable_disassociations'"> Disable Disassociations</label>
 					</div>
 			
@@ -265,6 +267,7 @@
                   <button type="button" class="btn btn-fixed-length btn-sm btn-default" data-toggle="modal" data-target="#historyModal" ng-click="viewHistory(entry[1])">View</button>
                   <button type="button" class="btn btn-sm btn-default" ng-click="downloadHistory(entry[1])">Download log</button>
                   <button type="button" class="btn btn-sm btn-default" ng-click="downloadHistory(entry[2])">Download pcap</button>
+				   <button type="button" class="btn btn-sm btn-default" ng-click="downloadHistory(entry[3])">Download 16800</button>
 									<button type="button" class="btn btn-fixed-length btn-sm btn-danger" ng-click="deleteHistory(entry[2])">Delete</button>
 								</div>
 							</td>
