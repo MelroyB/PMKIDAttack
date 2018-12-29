@@ -103,7 +103,11 @@ class PMKIDAttack extends Module
         if (!$this->checkRunning("hcxdumptool")) {
             $full_cmd = $this->request->command . " --enable_status 31 -o /pineapple/modules/PMKIDAttack/log/log_".time().".pcap > /pineapple/modules/PMKIDAttack/log/log_".time().".log";
             shell_exec("echo -e \"{$full_cmd}\" > /tmp/PMKIDAttack.run");
-
+			
+			
+			$full_cmd2 = "hcxpcaptool -z /pineapple/modules/PMKIDAttack/log/log_".time().".16800 /pineapple/modules/PMKIDAttack/log/log_".time().".pcap >> /pineapple/modules/PMKIDAttack/log/log_".time().".log";
+			shell_exec("echo -e \"{$full_cmd2}\" > /tmp/PMKIDAttack2.run");
+			
             $this->execBackground("/pineapple/modules/PMKIDAttack/scripts/PMKIDAttack.sh start");
         } else {
             $this->execBackground("/pineapple/modules/PMKIDAttack/scripts/PMKIDAttack.sh stop");
@@ -216,7 +220,7 @@ class PMKIDAttack extends Module
                 $entryDate = gmdate('Y-m-d H-i-s', $info[1]);
                 $entryName = basename($log_list[$i], ".pcap");
 
-                echo json_encode(array($entryDate, $entryName.".log", $entryName.".pcap"));
+                echo json_encode(array($entryDate, $entryName.".log", $entryName.".pcap", $entryName.".16800"));
 
                 if ($i!=count($log_list)-1) {
                     echo ',';
