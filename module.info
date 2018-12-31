@@ -1,6 +1,6 @@
 {
     "title": "PMKID Attack",
     "description": "WPA attack tool",
-    "version": "0.2",
+    "version": "0.4",
     "author": "Melroy"
 }
