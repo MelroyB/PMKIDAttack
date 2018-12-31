@@ -123,6 +123,7 @@
                   <select ng-change="update()" ng-model="selectedInterface" class="form-control input-sm">
                       <option>--</option>
                       <option ng-repeat="interface in interfaces">{{ interface }}</option>
+					  
                   </select>
               </div>
           </div>
@@ -142,6 +143,12 @@
               </div>
 			</div>
 
+			<div class="form-group">
+              <div class="input-group"> 
+                  <span class="input-group-addon input-sm"><img src="/modules/PMKIDAttack/resources/help.png" height=16 width=16 title="stay time on channel before hopping to the next channel &#xA; default: 5 seconds"></img> Time on Channel</span>
+                  <input ng-change="update()" type="text" class="form-control input-sm" ng-model="target2" placeholder="5">
+              </div>
+			</div>
 		  
 		  
 		  
@@ -160,6 +167,32 @@
                     </select>
                 </div>
             </div>
+			
+<!-- Choose FILTER -->
+			
+		  <div class="form-group">
+                <div class="input-group">
+                    <span class="input-group-addon input-sm"><img src="/modules/PMKIDAttack/resources/help.png" height=16 width=16 title="mac filter list &#xA; format: 112233445566 + comment  &#xA; maximum line lenght 255,  &#xA; maximum entries 64"></img> Filter Mode</span>
+                    <select ng-change="update()" ng-model="protoOptions.option10" class="form-control input-sm">
+                    <option></option>
+					<option value="">Do not use the filter list</option>
+                    <option value="--filtermode=1">Interact with all APs and CLIENTs in range, except(!) the ones from the filter list</option>
+                    <option value="--filtermode=2">Only interact with APs and CLIENTs in range, from the filter list</option>
+                    <option value="--filtermode=3">Only receive APs and CLIENTs in range, from the filter list</option>
+                    </select>
+                </div>
+            </div>			
+			
+          <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-addon input-sm" ><img src="/modules/PMKIDAttack/resources/help.png" height=16 width=16 title="Please choose a Filter Mode"> Filterlist</span>
+                <select ng-change="update()" ng-model="selectedFilter" class="form-control input-sm">
+
+                  <option ng-repeat="filter in filters">{{ filter }}</option>
+                </select>
+            </div>
+          </div>			
+			
 		  		  
 		  
 		  
@@ -168,54 +201,97 @@
                 <div class="input-group">
 					<div class="checkbox">
 						<img src="/modules/PMKIDAttack/resources/help.png" height=16 width=16 title="do not transmit proberequests to BROADCAST using a BROADCAST ESSID &#xA; do not transmit BROADCAST beacons &#xA; affected: ap-less and client-less attacks"></img>
-						<label><input type="checkbox" ng-change="update()" ng-model="protoOptions.option1" ng-true-value="'--disable_active_scan'"> Disable Active Scan</label>
+						<label><input type="checkbox" ng-change="update()" ng-model="protoOptions.option2" ng-true-value="'--disable_active_scan'"> Disable Active Scan</label>
 					</div>
 		  
 					<div class="checkbox">
 						<img src="/modules/PMKIDAttack/resources/help.png" height=16 width=16 title="disable transmitting deauthentications &#xA; affected: connections between client an access point"></img> 
 						<img src="/modules/PMKIDAttack/resources/caution.png" height=16 width=16 title="Enable this if you are connected trough WiFi with the Pineapple"></img>
-						<label><input type="checkbox" ng-change="update()" ng-model="protoOptions.option2" ng-true-value="'--disable_deauthentications'"> Disable Deauthentication</label>
+						<label><input type="checkbox" ng-change="update()" ng-model="protoOptions.option3" ng-true-value="'--disable_deauthentications'"> Disable Deauthentication</label>
 					</div>
 		                            
 					<div class="checkbox">
 						<img src="/modules/PMKIDAttack/resources/help.png" height=16 width=16 title="disable transmitting disassociations &#xA; affected: retry (EAPOL 4/4 - M4) attack"></img>
 						<img src="/modules/PMKIDAttack/resources/caution.png" height=16 width=16 title="Enable this if you are connected trough WiFi with the Pineapple"></img>
-						<label><input type="checkbox" ng-change="update()" ng-model="protoOptions.option3" ng-true-value="'--disable_disassociations'"> Disable Disassociations</label>
+						<label><input type="checkbox" ng-change="update()" ng-model="protoOptions.option4" ng-true-value="'--disable_disassociations'"> Disable Disassociations</label>
 					</div>
 			
 					<div class="checkbox">
 						<img src="/modules/PMKIDAttack/resources/help.png" height=16 width=16 title="disable attacks on single access points &#xA; affected: client-less (PMKID) attack"></img>
-						<label><input type="checkbox" ng-change="update()" ng-model="protoOptions.option4" ng-true-value="'--disable_ap_attacks'"> Disable AP Attacks</label>
+						<label><input type="checkbox" ng-change="update()" ng-model="protoOptions.option5" ng-true-value="'--disable_ap_attacks'"> Disable AP Attacks</label>
 					</div>
 			                       
 					<div class="checkbox">
 						<img src="/modules/PMKIDAttack/resources/help.png" height=16 width=16 title="disable attacks on single clients &#xA; affected: ap-less (EAPOL 2/4 - M2) attack"></img>
-						<label><input type="checkbox" ng-change="update()" ng-model="protoOptions.option5" ng-true-value="'--disable_client_attacks'"> Disable Client Attacks</label>
+						<label><input type="checkbox" ng-change="update()" ng-model="protoOptions.option6" ng-true-value="'--disable_client_attacks'"> Disable Client Attacks</label>
 					</div>
 
 					<div class="checkbox">
 						<img src="/modules/PMKIDAttack/resources/help.png" height=16 width=16 title="show radio channel assignment (scan for target access points) &#xA; this can be used to test if packet injection is working &#xA; if no access point responds, packet injection is probably not working"></img>
-						<label><input type="checkbox" ng-change="update()" ng-model="protoOptions.option6" ng-true-value="'--do_rcascan'"> Do RCA Scan</label>
+						<label><input type="checkbox" ng-change="update()" ng-model="protoOptions.option7" ng-true-value="'--do_rcascan'"> Do RCA Scan</label>
 					</div>			
 			
 					<div class="checkbox">
 						<img src="/modules/PMKIDAttack/resources/help.png" height=16 width=16 title="show wlan interfaces and quit"></img>
-						<label><input type="checkbox" ng-change="update()" ng-model="protoOptions.option7" ng-true-value="'-I'"> Show Interfaces and quit</label>
+						<label><input type="checkbox" ng-change="update()" ng-model="protoOptions.option8" ng-true-value="'-I'"> Show Interfaces and quit</label>
 					</div>	
                 </div>
 			</div>			
 		  
 		  
 		  
+<!-- Filter -->		  
+		  
+	
+<div class="panel panel-default" ng-show="$root.status.installed" ng-controller="PMKIDAttack_EditorController">
+    <div class="panel-heading pointer" data-toggle="collapse" data-target="#Editor">
+        <h4 class="panel-title">Filter Editor</h4>
+    </div>
+    <div id="Editor" class="panel-collapse collapse">
+      <div class="panel-body">
+
+          <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-addon input-sm">Filter</span>
+                <select ng-change="showFilter()" ng-model="selectedFilter" class="form-control input-sm">
+                  <option ng-repeat="filter in filters">{{ filter }}</option>
+                </select>
+            </div>
+          </div>
+		  
+
 		  
 		  
-		  
+
+          <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-addon input-sm">Name</span>
+                <input type="text" class="form-control input-sm" ng-disabled="selectedFilter != '--'" ng-model="filterName" placeholder="New Filter name">
+            </div>
+          </div>
+
+          <div class="form-group">
+              <div class="btn-group pull-right">
+                <button class="btn btn-{{saveFilterLabel}} btn-sm" ng-disabled="saving || filterName == ''" ng-click="saveFilterData()">{{saveFilter}}</button>
+
+                <button class="btn btn-{{deleteFilterLabel}} btn-sm" ng-disabled="deleting || selectedFilter == '--'" ng-click="deleteFilterData()">{{deleteFilter}}</button>
+              </div>
+              <div class="clearfix"></div>
+              <textarea class="form-control" rows="20" ng-model="filterData"></textarea>
+              <pre class="scrollable-pre log-pre">{{output}}</pre>
+          </div>
+
+      </div>
+    </div>
+</div>
+	  
 		  
 
 		  
 		  
 		  
 		  
+<!-- OUTPUT LOG -->
 		  
 <div class="panel panel-default" ng-show="$root.status.installed" ng-controller="PMKIDAttack_OutputController">
 	<div class="panel-heading">

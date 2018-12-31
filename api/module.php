@@ -256,19 +256,13 @@ class PMKIDAttack extends Module
     private function getFilters()
     {
         $this->response = array();
-        if ($this->request->compiled) {
-            $filterList = array_reverse(glob("/pineapple/modules/PMKIDAttack/filters/*.ef"));
-            array_push($this->response, "--");
-            foreach ($filterList as $filter) {
-                array_push($this->response, basename($filter));
-            }
-        } else {
+        
             $filterList = array_reverse(glob("/pineapple/modules/PMKIDAttack/filters/*.filter"));
             array_push($this->response, "--");
             foreach ($filterList as $filter) {
                 array_push($this->response, basename($filter));
-            }
-        }
+            
+        } 
     }
 
     private function showFilter()

@@ -198,6 +198,8 @@ registerController('PMKIDAttack_HistoryController', ['$api', '$scope', '$rootSco
 			$scope.refreshHistory();
 		})
 	});
+	
+
 
 	$scope.downloadHistory = (function(param) {
 		$api.request({
@@ -328,7 +330,7 @@ registerController('PMKIDAttack_OptionsController', ['$api', '$scope', '$rootSco
 		var return_value = "";
 
 		if ($scope.target2 != "")
-			return_value = "/" + $scope.target2 + "/ ";
+			return_value = "-t " + $scope.target2 + "/ ";
 
 		return return_value;
 	}
@@ -347,11 +349,15 @@ registerController('PMKIDAttack_OptionsController', ['$api', '$scope', '$rootSco
 		return return_value;
 	}
 
+	
+	
+	
+	
 	function updateFilter() {
 		var return_value = "";
 
 		if ($scope.selectedFilter != "--")
-			return_value = "-F /pineapple/modules/PMKIDAttack/filters/" + $scope.selectedFilter + " ";
+			return_value = "--filterlist=/pineapple/modules/PMKIDAttack/filters/" + $scope.selectedFilter + " ";
 
 		return return_value;
 	}
