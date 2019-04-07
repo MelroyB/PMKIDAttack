@@ -80,7 +80,7 @@ class PMKIDAttack extends Module
 
     private function handleDependencies()
     {
-        if (!$this->checkDependency("PMKIDAttack")) {
+        if (!$this->checkDependency("hcxdumptool")) {
             $this->execBackground("/pineapple/modules/PMKIDAttack/scripts/dependencies.sh install ".$this->request->destination);
             $this->response = array('success' => true);
         } else {
@@ -117,7 +117,7 @@ class PMKIDAttack extends Module
     private function refreshStatus()
     {
         if (!file_exists('/tmp/PMKIDAttack.progress')) {
-            if (!$this->checkDependency("PMKIDAttack")) {
+            if (!$this->checkDependency("hcxdumptool")) {
                 $installed = false;
                 $install = "Not installed";
                 $installLabel = "danger";
@@ -157,7 +157,7 @@ class PMKIDAttack extends Module
 
     private function refreshOutput()
     {
-        if ($this->checkDependency("PMKIDAttack")) {
+        if ($this->checkDependency("hcxdumptool")) {
             if ($this->checkRunning("hcxdumptool")) {
                 $path = "/pineapple/modules/PMKIDAttack/log";
 
