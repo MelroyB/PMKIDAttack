@@ -20,8 +20,8 @@ class PMKIDAttack extends Module
             case 'refreshStatus':
                 $this->refreshStatus();
                 break;
-            case 'toggleettercap':
-                $this->toggleettercap();
+            case 'togglePMKIDAttack':
+                $this->togglePMKIDAttack();
                 break;
             case 'handleDependencies':
                 $this->handleDependencies();
@@ -80,7 +80,7 @@ class PMKIDAttack extends Module
 
     private function handleDependencies()
     {
-        if (!$this->checkDependency("ettercap")) {
+        if (!$this->checkDependency("PMKIDAttack")) {
             $this->execBackground("/pineapple/modules/PMKIDAttack/scripts/dependencies.sh install ".$this->request->destination);
             $this->response = array('success' => true);
         } else {
@@ -98,7 +98,7 @@ class PMKIDAttack extends Module
         }
     }
 
-    private function toggleettercap()
+    private function togglePMKIDAttack()
     {
         if (!$this->checkRunning("hcxdumptool")) {
             $full_cmd = $this->request->command . " --enable_status 1 -o /pineapple/modules/PMKIDAttack/log/log_".time().".pcap > /pineapple/modules/PMKIDAttack/log/log_".time().".log";
@@ -117,7 +117,7 @@ class PMKIDAttack extends Module
     private function refreshStatus()
     {
         if (!file_exists('/tmp/PMKIDAttack.progress')) {
-            if (!$this->checkDependency("ettercap")) {
+            if (!$this->checkDependency("PMKIDAttack")) {
                 $installed = false;
                 $install = "Not installed";
                 $installLabel = "danger";
@@ -157,7 +157,7 @@ class PMKIDAttack extends Module
 
     private function refreshOutput()
     {
-        if ($this->checkDependency("ettercap")) {
+        if ($this->checkDependency("PMKIDAttack")) {
             if ($this->checkRunning("hcxdumptool")) {
                 $path = "/pineapple/modules/PMKIDAttack/log";
 

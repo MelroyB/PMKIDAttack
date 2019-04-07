@@ -54,7 +54,7 @@ registerController('PMKIDAttack_ControlsController', ['$api', '$scope', '$rootSc
 		})
 	});
 
-	$scope.toggleettercap = (function() {
+	$scope.togglePMKIDAttack = (function() {
 		if ($scope.status != "Stop")
 			$scope.status = "Starting...";
 		else
@@ -68,7 +68,7 @@ registerController('PMKIDAttack_ControlsController', ['$api', '$scope', '$rootSc
 
 		$api.request({
 			module: 'PMKIDAttack',
-			action: 'toggleettercap',
+			action: 'togglePMKIDAttack',
 			command: $rootScope.command
 		}, function(response) {
 			$timeout(function() {

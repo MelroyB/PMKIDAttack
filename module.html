@@ -45,7 +45,7 @@
 					</tr>
 					<tr ng-show="$root.status.installed">
 						<td style="padding-bottom: .5em;" class="text-muted">HcxDumptool</td>
-						<td style="text-align:right;padding-bottom: .5em;"><button type="button" style="width: 90px;" class="btn btn-{{statusLabel}} btn-xs" ng-disabled="starting" ng-click="toggleettercap()">{{status}}</button></td>
+						<td style="text-align:right;padding-bottom: .5em;"><button type="button" style="width: 90px;" class="btn btn-{{statusLabel}} btn-xs" ng-disabled="starting" ng-click="togglePMKIDAttack()">{{status}}</button></td>
 					</tr>
 				</table>
 			</div>
@@ -110,7 +110,7 @@
           <div class="form-group">
               <div class="input-group">
                   <span class="input-group-addon input-sm"><img src="/modules/PMKIDAttack/resources/help.png" height=16 width=16 title="Command to Run"></img> Command</span>
-                  <input type="text" class="form-control input-sm" ng-model="command" placeholder="ettercap command">
+                  <input type="text" class="form-control input-sm" ng-model="command" placeholder="PMKIDAttack command">
               </div>
           </div>
 
