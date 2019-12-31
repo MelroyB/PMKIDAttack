@@ -14,9 +14,11 @@ if [ "$1" = "install" ]; then
   if [ "$2" = "internal" ]; then
 	opkg update
     opkg install hcxdumptool
+    opkg install hcxtools
   elif [ "$2" = "sd" ]; then
     opkg update
-    opkg install hcxdumptool
+    opkg install hcxdumptool --dest sd
+    opkg install hcxtools --dest sd
 
   fi
 
