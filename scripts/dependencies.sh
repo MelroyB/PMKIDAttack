@@ -13,10 +13,10 @@ touch /tmp/PMKIDAttack.progress
 if [ "$1" = "install" ]; then
   if [ "$2" = "internal" ]; then
 	opkg update
-    wget -qO- https://raw.githubusercontent.com/adde88/hcxtools-hcxdumptool-openwrt/master/INSTALL.sh | bash -s -- -v -v
+    wget -qO- https://github.com/MelroyB/hcxtools-hcxdumptool-openwrt/blob/openwrt-19.07/INSTALL.sh | bash -s -- -v -v
   elif [ "$2" = "sd" ]; then
     opkg update
-    wget -qO- https://raw.githubusercontent.com/adde88/hcxtools-hcxdumptool-openwrt/master/INSTALL.sh | bash -s -- -v -v
+    wget -qO- https://github.com/MelroyB/hcxtools-hcxdumptool-openwrt/blob/openwrt-19.07/INSTALL.sh | bash -s -- -v -v
 
   fi
 
