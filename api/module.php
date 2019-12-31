@@ -117,7 +117,7 @@ class PMKIDAttack extends Module
     private function refreshStatus()
     {
         if (!file_exists('/tmp/PMKIDAttack.progress')) {
-            if (!$this->checkDependency("hcxdumptool")) {
+            if (!file_exists('/etc/config/PMKIDAttack')) {
                 $installed = false;
                 $install = "Not installed";
                 $installLabel = "danger";
