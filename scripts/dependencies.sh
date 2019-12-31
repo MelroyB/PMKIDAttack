@@ -25,8 +25,10 @@ if [ "$1" = "install" ]; then
   touch /etc/config/PMKIDAttack
   echo "config PMKIDAttack 'run'" > /etc/config/PMKIDAttack
   echo "config PMKIDAttack 'settings'" >> /etc/config/PMKIDAttack
+  echo "        option mode" >> /etc/config/PMKIDAttack
   echo "config PMKIDAttack 'autostart'" >> /etc/config/PMKIDAttack
   echo "config PMKIDAttack 'module'" >> /etc/config/PMKIDAttack
+  echo "        option installed" >> /etc/config/PMKIDAttack
 
   uci set PMKIDAttack.settings.mode='normal'
   uci commit PMKIDAttack.settings.mode
